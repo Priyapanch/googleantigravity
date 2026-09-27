@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Platform - Robot Code Gen Chat</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="chat-container">
+    <header class="chat-header">
+      <div class="header-info">
+        <div class="agent-avatar">🤖</div>
+        <div>
+          <h2>Robot Framework Test Engineer</h2>
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span id="agent-status">Deployed on Agent Platform</span>
+          </div>
+        </div>
+      </div>
+      <div class="session-badge" id="session-badge">Session: Connecting...</div>
+    </header>
+
+    <main class="chat-messages" id="chat-messages">
+      <div class="message system">
+        <div class="message-content">
+          👋 Welcome! I am your AI Test Automation Engineer deployed on Agent Platform. Ask me to generate Robot Framework test suites, inspect API schemas, or store test templates in Firestore.
+        </div>
+      </div>
+    </main>
+
+    <footer class="chat-input-container">
+      <form id="chat-form">
+        <textarea 
+          id="user-input" 
+          placeholder="Ask me to write a Robot Framework test suite for Web UI or REST API..." 
+          rows="1" 
+          required></textarea>
+        <button type="submit" id="send-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
