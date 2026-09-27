@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.5 (Python 3.13.14 on linux)" generated="2026-09-27T16:10:45.954058" rpa="false" schemaversion="5">
+<suite id="s1" name="Tmpia Ej 89" source="/tmp/tmpia_ej_89.robot">
+<test id="s1-t1" name="Verify Todo Item 1" line="9">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-09-27T16:10:46.127935" level="INFO">Creating Session using : alias=jsonplaceholder, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonplaceholder</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-09-27T16:10:46.127702" elapsed="0.000439"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-09-27T16:10:46.206388" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/todos/1 
+ path_url=/todos/1 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-09-27T16:10:46.206564" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/todos/1 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 27 Sep 2026 16:10:46 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'cache-control': 'max-age=43200', 'etag': 'W/"53-hfEnumeNh6YirfjyjaujcOPPT+s"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=QwcX6nLtJ2b6%2BABQIX1mfYF8MxKJ69sRv8nTGsMQs8o%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1785189191"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=QwcX6nLtJ2b6%2BABQIX1mfYF8MxKJ69sRv8nTGsMQs8o%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1785189191"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1785189203', 'Age': '8', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': 'a41bc7c6cadee2df-HKG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+} 
+ </msg>
+<msg time="2026-09-27T16:10:46.206648" level="INFO">/config/Desktop/Session1/robot-code-gen/.venv/lib/python3.13/site-packages/urllib3/connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-09-27T16:10:46.206814" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>jsonplaceholder</arg>
+<arg>/todos/1</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.128349" elapsed="0.078497"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-09-27T16:10:46.207746" level="INFO">Response Body: {'userId': 1, 'id': 1, 'title': 'delectus aut autem', 'completed': False}</msg>
+<arg>Response Body: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.207124" elapsed="0.000684"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.207997" elapsed="0.000348"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2026-09-27T16:10:46.208506" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2026-09-27T16:10:46.208773" level="INFO">To JSON using : content={
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+} </msg>
+<msg time="2026-09-27T16:10:46.208803" level="INFO">To JSON using : pretty_print=False </msg>
+<msg time="2026-09-27T16:10:46.208889" level="INFO">${json_body} = {'userId': 1, 'id': 1, 'title': 'delectus aut autem', 'completed': False}</msg>
+<var>${json_body}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.208478" elapsed="0.000433"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${json_body}</arg>
+<arg>userId</arg>
+<doc>Fails if `key` is not found from `dictionary`.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.209038" elapsed="0.000187"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${json_body}</arg>
+<arg>id</arg>
+<doc>Fails if `key` is not found from `dictionary`.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.209339" elapsed="0.000182"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${json_body}</arg>
+<arg>title</arg>
+<doc>Fails if `key` is not found from `dictionary`.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.209634" elapsed="0.000134"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${json_body}</arg>
+<arg>completed</arg>
+<doc>Fails if `key` is not found from `dictionary`.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.209869" elapsed="0.000167"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-09-27T16:10:46.210581" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${json_body}[id]</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.210231" elapsed="0.000425"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-09-27T16:10:46.211111" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${json_body}[userId]</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.210801" elapsed="0.000409"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_body}[title]</arg>
+<arg>delectus aut autem</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.211400" elapsed="0.000307"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_body}[completed]</arg>
+<arg>${FALSE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-27T16:10:46.211886" elapsed="0.000331"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2026-09-27T16:10:46.212397" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects </doc>
+<status status="PASS" start="2026-09-27T16:10:46.212327" elapsed="0.000151"/>
+</kw>
+<status status="PASS" start="2026-09-27T16:10:46.126731" elapsed="0.085866"/>
+</test>
+<status status="PASS" start="2026-09-27T16:10:45.955240" elapsed="0.257772"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tmpia Ej 89" id="s1" pass="1" fail="0" skip="0">Tmpia Ej 89</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-09-27T16:10:46.208506" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+</errors>
+</robot>
